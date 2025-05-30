@@ -21,6 +21,18 @@ const PrevaCare = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToSection = (sectionId) => {
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offsetTop = element.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    }
+  };
+
   const CallbackModal = () => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg p-8 max-w-md w-full relative">
@@ -76,13 +88,23 @@ const PrevaCare = () => {
               <span className="text-2xl font-semibold text-blue-500">preva.care</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-500 font-medium border-b-2 border-blue-500 pb-1">Home</a>
-              <a href="#" className="text-gray-700 hover:text-blue-500 font-medium">Services</a>
-              <a href="#" className="text-gray-700 hover:text-blue-500 font-medium">About Us</a>
-              <a href="#" className="text-gray-700 hover:text-blue-500 font-medium">Health Checkups</a>
-              <a href="#" className="text-gray-700 hover:text-blue-500 font-medium">Contact</a>
-              <button className="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition-colors font-medium">
-                Get Healthy
+              <button 
+                onClick={() => scrollToSection('home')}
+                className="text-gray-700 hover:text-blue-500 font-medium border-b-2 border-blue-500 pb-1"
+              >
+                Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('why-prevacare')}
+                className="text-gray-700 hover:text-blue-500 font-medium"
+              >
+                Why PrevaCare
+              </button>
+              <button 
+                onClick={() => scrollToSection('proactive-model')}
+                className="text-gray-700 hover:text-blue-500 font-medium"
+              >
+                Our Model
               </button>
             </div>
           </div>
@@ -90,7 +112,7 @@ const PrevaCare = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+      <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
         {/* Video Background Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
@@ -309,8 +331,6 @@ const PrevaCare = () => {
           </div>
         </div>
       </section>
-
-      {isModalOpen && <CallbackModal />}
     </div>
   );
 };
