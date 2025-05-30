@@ -352,62 +352,64 @@ const PrevaCare = () => {
 
           <div className="max-w-6xl mx-auto">
             <div className="relative mb-16">
-              <div className="hidden lg:block">
-                <div className="flex justify-center items-center space-x-8 mb-12">
-                  <div className="relative">
-                    <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-blue-500 relative">
-                      <Activity className="w-12 h-12 text-blue-500" />
-                      <span className="absolute -top-3 -left-3 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
+                <div className="hidden lg:block">
+                <div className="flex justify-center items-start mb-20 relative">
+                  <div className="flex items-center space-x-16">
+                    <div className="relative">
+                      <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-blue-500 relative">
+                        <Activity className="w-12 h-12 text-blue-500" />
+                        <span className="absolute -top-3 -left-3 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
+                      </div>
+                      <div className="text-center mt-4 max-w-32">
+                        <h3 className="text-md font-semibold text-gray-800 mb-2">Lab Check</h3>
+                        <p className="text-sm text-gray-600">Comprehensive health screenings</p>
+                      </div>
                     </div>
-                    <div className="text-center mt-4 max-w-32">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Lab Check</h3>
-                      <p className="text-sm text-gray-600">Comprehensive health screenings</p>
+
+                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mb-20"></div>
+
+                    <div className="relative">
+                      <div className="bg-emerald-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-emerald-500 relative">
+                        <Phone className="w-12 h-12 text-emerald-500" />
+                        <span className="absolute -top-3 -left-3 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
+                      </div>
+                      <div className="text-center mt-4 max-w-32">
+                        <h3 className="text-md font-semibold text-gray-800 mb-2">App Integration</h3>
+                        <p className="text-sm text-gray-600">Seamless data integration</p>
+                      </div>
+                    </div>
+
+                    <div className="w-16 h-1 bg-gradient-to-r from-emerald-500 to-purple-500 rounded-full mb-20"></div>
+
+                    <div className="relative">
+                      <div className="bg-purple-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-purple-500 relative">
+                        <BarChart3 className="w-12 h-12 text-purple-500" />
+                        <span className="absolute -top-3 -left-3 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
+                      </div>
+                      <div className="text-center mt-4 max-w-32">
+                        <h3 className="text-md font-semibold text-gray-800 mb-2">Health Data</h3>
+                        <p className="text-sm text-gray-600">Real-time tracking</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex-1 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full"></div>
-
-                  <div className="relative">
-                    <div className="bg-emerald-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-emerald-500 relative">
-                      <Phone className="w-12 h-12 text-emerald-500" />
-                      <span className="absolute -top-3 -left-3 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
-                    </div>
-                    <div className="text-center mt-4 max-w-32">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">App Integration</h3>
-                      <p className="text-sm text-gray-600">Seamless data integration</p>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 h-1 bg-gradient-to-r from-emerald-500 to-purple-500 rounded-full"></div>
-
-                  <div className="relative">
-                    <div className="bg-purple-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-purple-500 relative">
-                      <BarChart3 className="w-12 h-12 text-purple-500" />
-                      <span className="absolute -top-3 -left-3 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
-                    </div>
-                    <div className="text-center mt-4 max-w-32">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Health Data</h3>
-                      <p className="text-sm text-gray-600">Real-time tracking</p>
-                    </div>
-                  </div>
+                  <svg className="absolute right-8 top-[30px]" width="150" height="180" viewBox="0 0 150 180" fill="none">
+                    <path 
+                      d="M20 20 Q130 20 130 160" 
+                      stroke="url(#gradient3to4)" 
+                      strokeWidth="4" 
+                      fill="none"
+                    />
+                    <path
+                        d="M20 20 Q130 20 130 160" 
+                        stroke="url(#gradient3to4)" 
+                        strokeWidth="4" 
+                        fill="none"
+                    />
+                  </svg>
                 </div>
 
-                <div className="flex justify-center items-center space-x-8 relative">
-                  <div className="absolute left-1/2 -top-16 w-1 h-16 bg-gradient-to-b from-purple-500 to-orange-500 rounded-full transform -translate-x-1/2"></div>
-                  
-                  <div className="relative">
-                    <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative">
-                      <Brain className="w-12 h-12 text-orange-500" />
-                      <span className="absolute -top-3 -left-3 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
-                    </div>
-                    <div className="text-center mt-4 max-w-32">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Analysis</h3>
-                      <p className="text-sm text-gray-600">Intelligent insights</p>
-                    </div>
-                  </div>
-
-                  <div className="flex-1 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full max-w-xs"></div>
-
+                <div className="flex justify-center items-center space-x-16">
                   <div className="relative">
                     <div className="bg-red-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-red-500 relative">
                       <Zap className="w-12 h-12 text-red-500" />
@@ -416,6 +418,18 @@ const PrevaCare = () => {
                     <div className="text-center mt-4 max-w-32">
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">Action</h3>
                       <p className="text-sm text-gray-600">Personalized recommendations</p>
+                    </div>
+                  </div>
+                  <div className="w-16 h-1 bg-gradient-to-l from-orange-500 to-red-500 rounded-full mb-20"></div>
+
+                  <div className="relative">
+                    <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative">
+                      <Brain className="w-12 h-12 text-orange-500" />
+                      <span className="absolute -top-3 -left-3 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
+                    </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Analysis</h3>
+                      <p className="text-sm text-gray-600">Intelligent insights</p>
                     </div>
                   </div>
                 </div>
