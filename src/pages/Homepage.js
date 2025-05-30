@@ -395,23 +395,24 @@ const PrevaCare = () => {
 
                   <svg className="absolute right-8 top-[30px]" width="150" height="450" viewBox="0 0 150 450" fill="none">
                     <path 
-                        d="M20 20 Q130 20 130 160 L130 200 Q130 340 15 340" 
+                        d="M25 25 Q135 25 135 160 L135 160 Q135 295 25 295 L5 295" 
                         stroke="url(#gradient3to4)" 
                         strokeWidth="4" 
                         fill="none"
-                    />
+                    /> 
                     <defs>
-                      <linearGradient id="gradient3to4" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="gradient3to4" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stopColor="#a855f7" />
                         <stop offset="100%" stopColor="#f97316" />
-                      </linearGradient>
+                        </linearGradient>
                     </defs>
-                  </svg>
+                </svg>
+                <div className="absolute top-[323px] right-[175px] w-[130px] h-1 bg-gradient-to-r from-purple-500 to-orange-500"></div>
                 </div>
 
                 <div className="flex justify-center items-center space-x-16">
                   <div className="relative">
-                    <div className="bg-red-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-red-500 relative">
+                    <div className="bg-red-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-red-500 relative ml-5">
                       <Zap className="w-12 h-12 text-red-500" />
                       <span className="absolute -top-3 -left-3 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
                     </div>
@@ -423,7 +424,7 @@ const PrevaCare = () => {
                   <div className="w-16 h-1 bg-gradient-to-l from-orange-500 to-red-500 rounded-full mb-20"></div>
 
                   <div className="relative">
-                    <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative">
+                    <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative ml-5">
                       <Brain className="w-12 h-12 text-orange-500" />
                       <span className="absolute -top-3 -left-3 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
                     </div>
