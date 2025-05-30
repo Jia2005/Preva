@@ -393,15 +393,9 @@ const PrevaCare = () => {
                     </div>
                   </div>
 
-                  <svg className="absolute right-8 top-[30px]" width="150" height="180" viewBox="0 0 150 180" fill="none">
+                  <svg className="absolute right-8 top-[30px]" width="150" height="450" viewBox="0 0 150 450" fill="none">
                     <path 
-                      d="M20 20 Q130 20 130 160" 
-                      stroke="url(#gradient3to4)" 
-                      strokeWidth="4" 
-                      fill="none"
-                    />
-                    <path
-                        d="M20 20 Q130 20 130 160" 
+                        d="M20 20 Q130 20 130 160 L130 200 Q130 340 15 340" 
                         stroke="url(#gradient3to4)" 
                         strokeWidth="4" 
                         fill="none"
