@@ -23,11 +23,10 @@ const PrevaCare = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Active section tracking
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'why-prevacare', 'proactive-model'];
-      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+      const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -39,7 +38,7 @@ const PrevaCare = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -49,12 +48,12 @@ const PrevaCare = () => {
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        const offsetTop = element.offsetTop - 80; // Account for fixed navbar
+        const offsetTop = element.offsetTop - 80;
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       }
     }
     setActiveSection(sectionId);
-    setIsMobileMenuOpen(false); // Close mobile menu when navigating
+    setIsMobileMenuOpen(false);
   };
 
   const CallbackModal = () => (
@@ -101,7 +100,6 @@ const PrevaCare = () => {
 
   return (
     <div className="min-h-screen bg-white" style={{ scrollBehavior: 'smooth' }}>
-      {/* Navigation */}
       <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-40">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -112,7 +110,6 @@ const PrevaCare = () => {
               <span className="text-2xl font-semibold text-blue-500">preva.care</span>
             </div>
             
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('home')}
@@ -146,7 +143,6 @@ const PrevaCare = () => {
               </button>
             </div>
 
-            {/* Mobile Menu Button */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-gray-700 hover:text-blue-500 transition-colors"
@@ -155,7 +151,6 @@ const PrevaCare = () => {
             </button>
           </div>
 
-          {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
             <div className="md:hidden mt-4 py-4 border-t border-gray-100">
               <div className="flex flex-col space-y-4">
@@ -195,12 +190,9 @@ const PrevaCare = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
-        {/* Video Background Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-64 h-64 border border-white rounded-full"></div>
           <div className="absolute bottom-20 right-10 w-48 h-48 border border-white rounded-full"></div>
@@ -231,7 +223,6 @@ const PrevaCare = () => {
         </div>
       </section>
 
-      {/* Why PrevaCare Section */}
       <section id="why-prevacare" className={`py-20 bg-gray-50 transition-all duration-1000 ${isVisible['why-prevacare'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -348,7 +339,6 @@ const PrevaCare = () => {
         </div>
       </section>
 
-      {/* Proactive Model Section */}
       <section id="proactive-model" className={`py-20 bg-white transition-all duration-1000 ${isVisible['proactive-model'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -361,77 +351,76 @@ const PrevaCare = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            {/* Roadmap Style Process Flow */}
             <div className="relative mb-16">
-              {/* Desktop Roadmap */}
               <div className="hidden lg:block">
-                <div className="relative">
-                  {/* Top Path */}
-                  <div className="flex justify-between items-center mb-8">
-                    <div className="w-1/3 flex justify-center">
-                      <div className="flex flex-col items-center">
-                        <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-blue-500">
-                          <Activity className="w-10 h-10 text-blue-500" />
-                          <span className="absolute -top-2 -left-2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Lab Check</h3>
-                        <p className="text-sm text-gray-600 text-center max-w-32">Comprehensive health screenings</p>
-                      </div>
+                <div className="flex justify-center items-center space-x-8 mb-12">
+                  <div className="relative">
+                    <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-blue-500 relative">
+                      <Activity className="w-12 h-12 text-blue-500" />
+                      <span className="absolute -top-3 -left-3 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
                     </div>
-                    <div className="w-1/3 flex justify-center">
-                      <div className="flex flex-col items-center">
-                        <div className="bg-emerald-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-emerald-500">
-                          <Phone className="w-10 h-10 text-emerald-500" />
-                          <span className="absolute -top-2 -left-2 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">App Integration</h3>
-                        <p className="text-sm text-gray-600 text-center max-w-32">Seamless data integration</p>
-                      </div>
-                    </div>
-                    <div className="w-1/3 flex justify-center">
-                      <div className="flex flex-col items-center">
-                        <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-purple-500">
-                          <BarChart3 className="w-10 h-10 text-purple-500" />
-                          <span className="absolute -top-2 -left-2 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Health Data</h3>
-                        <p className="text-sm text-gray-600 text-center max-w-32">Real-time tracking</p>
-                      </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Lab Check</h3>
+                      <p className="text-sm text-gray-600">Comprehensive health screenings</p>
                     </div>
                   </div>
 
-                  {/* Connecting Path */}
-                  <div className="flex justify-center mb-8">
-                    <div className="w-4/5 h-2 bg-gradient-to-r from-blue-500 via-emerald-500 via-purple-500 to-orange-500 rounded-full opacity-30"></div>
+                  <div className="flex-1 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full"></div>
+
+                  <div className="relative">
+                    <div className="bg-emerald-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-emerald-500 relative">
+                      <Phone className="w-12 h-12 text-emerald-500" />
+                      <span className="absolute -top-3 -left-3 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
+                    </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">App Integration</h3>
+                      <p className="text-sm text-gray-600">Seamless data integration</p>
+                    </div>
                   </div>
 
-                  {/* Bottom Path */}
-                  <div className="flex justify-between items-center">
-                    <div className="w-1/2 flex justify-center">
-                      <div className="flex flex-col items-center">
-                        <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-orange-500">
-                          <Brain className="w-10 h-10 text-orange-500" />
-                          <span className="absolute -top-2 -left-2 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Analysis</h3>
-                        <p className="text-sm text-gray-600 text-center max-w-32">Intelligent insights</p>
-                      </div>
+                  <div className="flex-1 h-1 bg-gradient-to-r from-emerald-500 to-purple-500 rounded-full"></div>
+
+                  <div className="relative">
+                    <div className="bg-purple-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-purple-500 relative">
+                      <BarChart3 className="w-12 h-12 text-purple-500" />
+                      <span className="absolute -top-3 -left-3 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
                     </div>
-                    <div className="w-1/2 flex justify-center">
-                      <div className="flex flex-col items-center">
-                        <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-red-500">
-                          <Zap className="w-10 h-10 text-red-500" />
-                          <span className="absolute -top-2 -left-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
-                        </div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Action</h3>
-                        <p className="text-sm text-gray-600 text-center max-w-32">Personalized recommendations</p>
-                      </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Health Data</h3>
+                      <p className="text-sm text-gray-600">Real-time tracking</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex justify-center items-center space-x-8 relative">
+                  <div className="absolute left-1/2 -top-16 w-1 h-16 bg-gradient-to-b from-purple-500 to-orange-500 rounded-full transform -translate-x-1/2"></div>
+                  
+                  <div className="relative">
+                    <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative">
+                      <Brain className="w-12 h-12 text-orange-500" />
+                      <span className="absolute -top-3 -left-3 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
+                    </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Analysis</h3>
+                      <p className="text-sm text-gray-600">Intelligent insights</p>
+                    </div>
+                  </div>
+
+                  <div className="flex-1 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full max-w-xs"></div>
+
+                  <div className="relative">
+                    <div className="bg-red-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-red-500 relative">
+                      <Zap className="w-12 h-12 text-red-500" />
+                      <span className="absolute -top-3 -left-3 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
+                    </div>
+                    <div className="text-center mt-4 max-w-32">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Action</h3>
+                      <p className="text-sm text-gray-600">Personalized recommendations</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Mobile Roadmap */}
               <div className="lg:hidden">
                 <div className="relative">
                   {[
@@ -442,12 +431,10 @@ const PrevaCare = () => {
                     { icon: Zap, title: "Action", desc: "Personalized recommendations", color: "red", number: "5" }
                   ].map((step, index) => (
                     <div key={index} className="relative flex items-center mb-8 last:mb-0">
-                      {/* Connecting Line */}
                       {index < 4 && (
                         <div className={`absolute left-10 top-20 w-0.5 h-16 bg-gradient-to-b from-${step.color}-500 to-gray-300`}></div>
                       )}
                       
-                      {/* Step Content */}
                       <div className="flex items-center bg-white rounded-lg shadow-md p-4 w-full hover:shadow-lg transition-shadow">
                         <div className={`bg-${step.color}-100 w-20 h-20 rounded-full flex items-center justify-center mr-4 shadow-lg border-4 border-${step.color}-500 relative flex-shrink-0`}>
                           <step.icon className={`w-10 h-10 text-${step.color}-500`} />
@@ -466,7 +453,6 @@ const PrevaCare = () => {
               </div>
             </div>
 
-            {/* Key Features */}
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="bg-gray-50 p-8 rounded-lg text-center hover:shadow-lg transition-shadow">
                 <Activity className="w-12 h-12 text-blue-500 mx-auto mb-4" />
@@ -497,7 +483,6 @@ const PrevaCare = () => {
         </div>
       </section>
 
-      {/* Modal */}
       {isModalOpen && <CallbackModal />}
     </div>
   );
