@@ -1,11 +1,11 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Preva from "./pages/Homepage";
+import PrevaCare from "./pages/Homepage";
 
 const App = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Preva />} />
+        <Route path="/" element={<PrevaCare />} />
       </Routes>
     </HashRouter>
   );
