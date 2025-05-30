@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target, Menu} from 'lucide-react';
+import Logo from './logo.png';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -125,8 +126,8 @@ const PrevaCare = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className={`flex items-center space-x-2 transition-all duration-700 ${heroLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg"></div>
+              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                <img src={Logo} className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-semibold text-blue-500">preva.care</span>
             </div>
