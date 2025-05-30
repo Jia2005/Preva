@@ -1,31 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Play, 
-  Phone, 
-  Calendar, 
-  CheckCircle, 
-  TrendingUp, 
-  Shield, 
-  Users, 
-  BarChart3,
-  ArrowRight,
-  X,
-  Activity,
-  Brain,
-  Heart,
-  Zap,
-  Building2,
-  LineChart,
-  FileText,
-  Target
-} from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target} from 'lucide-react';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState({});
-  const [activeSection, setActiveSection] = useState('home');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
