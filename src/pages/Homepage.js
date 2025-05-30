@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target} from 'lucide-react';
+import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target, Menu} from 'lucide-react';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState({});
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +23,26 @@ const PrevaCare = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Active section tracking
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'why-prevacare', 'proactive-model'];
+      const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     if (sectionId === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,6 +53,8 @@ const PrevaCare = () => {
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       }
     }
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false); // Close mobile menu when navigating
   };
 
   const CallbackModal = () => (
@@ -76,7 +100,7 @@ const PrevaCare = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" style={{ scrollBehavior: 'smooth' }}>
       {/* Navigation */}
       <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-40">
         <div className="container mx-auto px-6 py-4">
@@ -87,27 +111,87 @@ const PrevaCare = () => {
               </div>
               <span className="text-2xl font-semibold text-blue-500">preva.care</span>
             </div>
+            
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-blue-500 font-medium border-b-2 border-blue-500 pb-1"
+                className={`text-gray-700 hover:text-blue-500 font-medium pb-1 transition-all duration-300 ${
+                  activeSection === 'home' 
+                    ? 'border-b-2 border-blue-500 text-blue-500' 
+                    : 'border-b-2 border-transparent'
+                }`}
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection('why-prevacare')}
-                className="text-gray-700 hover:text-blue-500 font-medium"
+                className={`text-gray-700 hover:text-blue-500 font-medium pb-1 transition-all duration-300 ${
+                  activeSection === 'why-prevacare' 
+                    ? 'border-b-2 border-blue-500 text-blue-500' 
+                    : 'border-b-2 border-transparent'
+                }`}
               >
                 Why PrevaCare
               </button>
               <button 
                 onClick={() => scrollToSection('proactive-model')}
-                className="text-gray-700 hover:text-blue-500 font-medium"
+                className={`text-gray-700 hover:text-blue-500 font-medium pb-1 transition-all duration-300 ${
+                  activeSection === 'proactive-model' 
+                    ? 'border-b-2 border-blue-500 text-blue-500' 
+                    : 'border-b-2 border-transparent'
+                }`}
               >
                 Our Model
               </button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-gray-700 hover:text-blue-500 transition-colors"
+            >
+              <Menu size={24} />
+            </button>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 py-4 border-t border-gray-100">
+              <div className="flex flex-col space-y-4">
+                <button 
+                  onClick={() => scrollToSection('home')}
+                  className={`text-left py-2 px-4 rounded-lg transition-all duration-300 ${
+                    activeSection === 'home' 
+                      ? 'bg-blue-50 text-blue-500 font-medium' 
+                      : 'text-gray-700 hover:text-blue-500 hover:bg-gray-50'
+                  }`}
+                >
+                  Home
+                </button>
+                <button 
+                  onClick={() => scrollToSection('why-prevacare')}
+                  className={`text-left py-2 px-4 rounded-lg transition-all duration-300 ${
+                    activeSection === 'why-prevacare' 
+                      ? 'bg-blue-50 text-blue-500 font-medium' 
+                      : 'text-gray-700 hover:text-blue-500 hover:bg-gray-50'
+                  }`}
+                >
+                  Why PrevaCare
+                </button>
+                <button 
+                  onClick={() => scrollToSection('proactive-model')}
+                  className={`text-left py-2 px-4 rounded-lg transition-all duration-300 ${
+                    activeSection === 'proactive-model' 
+                      ? 'bg-blue-50 text-blue-500 font-medium' 
+                      : 'text-gray-700 hover:text-blue-500 hover:bg-gray-50'
+                  }`}
+                >
+                  Our Model
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -277,27 +361,108 @@ const PrevaCare = () => {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            {/* Process Flow */}
+            {/* Roadmap Style Process Flow */}
             <div className="relative mb-16">
-              <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
-                {[
-                  { icon: Activity, title: "Lab Check", desc: "Comprehensive health screenings", color: "blue" },
-                  { icon: Phone, title: "App", desc: "Seamless data integration", color: "emerald" },
-                  { icon: BarChart3, title: "Health Data", desc: "Real-time tracking", color: "purple" },
-                  { icon: Brain, title: "AI Analysis", desc: "Intelligent insights", color: "orange" },
-                  { icon: Zap, title: "Action", desc: "Personalized recommendations", color: "red" }
-                ].map((step, index) => (
-                  <div key={index} className="flex flex-col items-center text-center group relative">
-                    <div className={`bg-${step.color}-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 group-hover:bg-${step.color}-200 transition-colors shadow-lg`}>
-                      <step.icon className={`w-10 h-10 text-${step.color}-500`} />
+              {/* Desktop Roadmap */}
+              <div className="hidden lg:block">
+                <div className="relative">
+                  {/* Top Path */}
+                  <div className="flex justify-between items-center mb-8">
+                    <div className="w-1/3 flex justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-blue-500">
+                          <Activity className="w-10 h-10 text-blue-500" />
+                          <span className="absolute -top-2 -left-2 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Lab Check</h3>
+                        <p className="text-sm text-gray-600 text-center max-w-32">Comprehensive health screenings</p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-600 max-w-32">{step.desc}</p>
-                    {index < 4 && (
-                      <ArrowRight className="hidden md:block absolute -right-8 top-8 w-6 h-6 text-gray-300" />
-                    )}
+                    <div className="w-1/3 flex justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-emerald-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-emerald-500">
+                          <Phone className="w-10 h-10 text-emerald-500" />
+                          <span className="absolute -top-2 -left-2 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">App Integration</h3>
+                        <p className="text-sm text-gray-600 text-center max-w-32">Seamless data integration</p>
+                      </div>
+                    </div>
+                    <div className="w-1/3 flex justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-purple-500">
+                          <BarChart3 className="w-10 h-10 text-purple-500" />
+                          <span className="absolute -top-2 -left-2 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Health Data</h3>
+                        <p className="text-sm text-gray-600 text-center max-w-32">Real-time tracking</p>
+                      </div>
+                    </div>
                   </div>
-                ))}
+
+                  {/* Connecting Path */}
+                  <div className="flex justify-center mb-8">
+                    <div className="w-4/5 h-2 bg-gradient-to-r from-blue-500 via-emerald-500 via-purple-500 to-orange-500 rounded-full opacity-30"></div>
+                  </div>
+
+                  {/* Bottom Path */}
+                  <div className="flex justify-between items-center">
+                    <div className="w-1/2 flex justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-orange-500">
+                          <Brain className="w-10 h-10 text-orange-500" />
+                          <span className="absolute -top-2 -left-2 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Analysis</h3>
+                        <p className="text-sm text-gray-600 text-center max-w-32">Intelligent insights</p>
+                      </div>
+                    </div>
+                    <div className="w-1/2 flex justify-center">
+                      <div className="flex flex-col items-center">
+                        <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg border-4 border-red-500">
+                          <Zap className="w-10 h-10 text-red-500" />
+                          <span className="absolute -top-2 -left-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
+                        </div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Action</h3>
+                        <p className="text-sm text-gray-600 text-center max-w-32">Personalized recommendations</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Roadmap */}
+              <div className="lg:hidden">
+                <div className="relative">
+                  {[
+                    { icon: Activity, title: "Lab Check", desc: "Comprehensive health screenings", color: "blue", number: "1" },
+                    { icon: Phone, title: "App Integration", desc: "Seamless data integration", color: "emerald", number: "2" },
+                    { icon: BarChart3, title: "Health Data", desc: "Real-time tracking", color: "purple", number: "3" },
+                    { icon: Brain, title: "AI Analysis", desc: "Intelligent insights", color: "orange", number: "4" },
+                    { icon: Zap, title: "Action", desc: "Personalized recommendations", color: "red", number: "5" }
+                  ].map((step, index) => (
+                    <div key={index} className="relative flex items-center mb-8 last:mb-0">
+                      {/* Connecting Line */}
+                      {index < 4 && (
+                        <div className={`absolute left-10 top-20 w-0.5 h-16 bg-gradient-to-b from-${step.color}-500 to-gray-300`}></div>
+                      )}
+                      
+                      {/* Step Content */}
+                      <div className="flex items-center bg-white rounded-lg shadow-md p-4 w-full hover:shadow-lg transition-shadow">
+                        <div className={`bg-${step.color}-100 w-20 h-20 rounded-full flex items-center justify-center mr-4 shadow-lg border-4 border-${step.color}-500 relative flex-shrink-0`}>
+                          <step.icon className={`w-10 h-10 text-${step.color}-500`} />
+                          <span className={`absolute -top-2 -left-2 bg-${step.color}-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold`}>
+                            {step.number}
+                          </span>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-gray-800 mb-2">{step.title}</h3>
+                          <p className="text-sm text-gray-600">{step.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -331,6 +496,9 @@ const PrevaCare = () => {
           </div>
         </div>
       </section>
+
+      {/* Modal */}
+      {isModalOpen && <CallbackModal />}
     </div>
   );
 };
