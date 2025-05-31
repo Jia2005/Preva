@@ -6,6 +6,7 @@ import video from './../Media/video.mp4';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const [isVisible, setIsVisible] = useState({});
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -79,6 +80,30 @@ const PrevaCare = () => {
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
   };
+
+  const openCalendly = () => {
+    setIsCalendlyOpen(true);
+  };
+
+  const CalendlyModal = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
+      <div className="bg-white rounded-lg max-w-4xl w-full h-[600px] relative animate-in slide-in-from-bottom-4 duration-300">
+        <button 
+          onClick={() => setIsCalendlyOpen(false)}
+          className="absolute top-4 right-4 z-10 text-gray-400 hover:text-gray-600 transition-colors bg-white rounded-full p-2 shadow-lg"
+        >
+          <X size={24} />
+        </button>
+        <iframe
+          src="https://calendly.com/jia2-harisinghani/30min"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          className="rounded-lg"
+        ></iframe>
+      </div>
+    </div>
+  );
 
   const CallbackModal = () => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
@@ -295,7 +320,10 @@ const PrevaCare = () => {
             India's most complete preventive healthcare platform for corporates, employees & elders.
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 delay-500 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <button className="bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 font-medium text-lg flex items-center gap-2 hover:scale-105 transform">
+            <button 
+              onClick={openCalendly}
+              className="bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 font-medium text-lg flex items-center gap-2 hover:scale-105 transform"
+            >
               <Calendar size={20} />
               Schedule a Demo
             </button>
@@ -514,7 +542,7 @@ const PrevaCare = () => {
                         </linearGradient>
                     </defs>
                   </svg>
-                  <div className={`absolute top-[323px] right-[175px] w-[130px] h-1 bg-gradient-to-l from-orange-500 to-purple-500 rounded-full transition-all duration-500 delay-1400 ease-out origin-right ${modelAnimationStep >= 6 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+                 <div className={`absolute top-[323px] right-[175px] w-[130px] h-1 bg-gradient-to-l from-orange-500 to-purple-500 rounded-full transition-all duration-500 delay-1400 ease-out origin-right ${modelAnimationStep >= 6 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
                 </div>
 
                 <div className="flex justify-center items-center space-x-16">
@@ -607,6 +635,7 @@ const PrevaCare = () => {
       </section>
 
       {isModalOpen && <CallbackModal />}
+      {isCalendlyOpen && <CalendlyModal />}
     </div>
   );
 };
