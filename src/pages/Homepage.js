@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target, Menu} from 'lucide-react';
 import Logo from './../Media/logo.png';
+import video from './../Media/video.mp4';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -213,6 +214,7 @@ const PrevaCare = () => {
       </nav>
 
       <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 overflow-hidden">
+        <video src={video} autoPlay loop muted className="absolute inset-0 w-full h-full object-cover z-0" onLoadedData={() => setHeroLoaded(true)} />
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         
         <div className="absolute inset-0 opacity-10">
