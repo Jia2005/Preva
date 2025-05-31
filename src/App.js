@@ -1,5 +1,5 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import PrevaCare from "./pages/Homepage";
+import PrevaCare from './Pages/Homepage';
 
 const App = () => {
   return (

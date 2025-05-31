@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target, Menu} from 'lucide-react';
-import Logo from './logo.png';
+import Logo from './../Media/logo.png';
 
 const PrevaCare = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -127,7 +127,7 @@ const PrevaCare = () => {
           <div className="flex items-center justify-between">
             <div className={`flex items-center space-x-2 transition-all duration-700 ${heroLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
               <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                <img src={Logo} className="w-5 h-5 text-white" />
+                <img src={Logo} className="w-8 h-8 text-white" />
               </div>
               <span className="text-2xl font-semibold text-blue-500">preva.care</span>
             </div>
@@ -390,7 +390,7 @@ const PrevaCare = () => {
               <div className="hidden lg:block">
                 <div className="flex justify-center items-start mb-20 relative">
                   <div className="flex items-center space-x-16">
-                    <div className={`relative transition-all duration-500 ${modelAnimationStep >= 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                    <div className={`relative transition-all duration-400 ease-out ${modelAnimationStep >= 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
                       <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-blue-500 relative">
                         <Activity className="w-12 h-12 text-blue-500" />
                         <span className="absolute -top-3 -left-3 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</span>
@@ -401,9 +401,9 @@ const PrevaCare = () => {
                       </div>
                     </div>
 
-                    <div className={`w-16 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mb-20 transition-all duration-500 delay-300 ${modelAnimationStep >= 1 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+                    <div className={`w-16 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mb-20 transition-all duration-500 delay-400 ease-out ${modelAnimationStep >= 1 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
 
-                    <div className={`relative transition-all duration-500 delay-500 ${modelAnimationStep >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                    <div className={`relative transition-all duration-400 delay-500 ease-out ${modelAnimationStep >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
                       <div className="bg-emerald-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-emerald-500 relative">
                         <Phone className="w-12 h-12 text-emerald-500" />
                         <span className="absolute -top-3 -left-3 bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</span>
@@ -414,9 +414,9 @@ const PrevaCare = () => {
                       </div>
                     </div>
 
-                    <div className={`w-16 h-1 bg-gradient-to-r from-emerald-500 to-purple-500 rounded-full mb-20 transition-all duration-700 delay-700 ${modelAnimationStep >= 3 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+                    <div className={`w-16 h-1 bg-gradient-to-r from-emerald-500 to-purple-500 rounded-full mb-20 transition-all duration-500 delay-700 ease-out ${modelAnimationStep >= 3 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
 
-                    <div className={`relative transition-all duration-700 delay-1000 ${modelAnimationStep >= 4 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                    <div className={`relative transition-all duration-400 delay-800 ease-out ${modelAnimationStep >= 4 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
                       <div className="bg-purple-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-purple-500 relative">
                         <BarChart3 className="w-12 h-12 text-purple-500" />
                         <span className="absolute -top-3 -left-3 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</span>
@@ -428,7 +428,7 @@ const PrevaCare = () => {
                     </div>
                   </div>
 
-                  <svg className={`absolute right-8 top-[30px] transition-all duration-1000 delay-1500 ${modelAnimationStep >= 5 ? 'opacity-100' : 'opacity-0'}`} width="150" height="450" viewBox="0 0 150 450" fill="none">
+                  <svg className={`absolute right-8 top-[30px] transition-all duration-600 delay-1000 ease-out ${modelAnimationStep >= 5 ? 'opacity-100' : 'opacity-0'}`} width="150" height="450" viewBox="0 0 150 450" fill="none">
                     <path 
                         d="M25 25 Q135 25 135 160 L135 160 Q135 295 25 295 L5 295" 
                         stroke="url(#gradient3to4)" 
@@ -436,7 +436,7 @@ const PrevaCare = () => {
                         fill="none"
                         strokeDasharray="500"
                         strokeDashoffset={modelAnimationStep >= 5 ? "0" : "500"}
-                        style={{ transition: 'stroke-dashoffset 1.5s ease-in-out' }}
+                        style={{ transition: 'stroke-dashoffset 1s ease-out' }}
                     /> 
                     <defs>
                         <linearGradient id="gradient3to4" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -445,11 +445,11 @@ const PrevaCare = () => {
                         </linearGradient>
                     </defs>
                   </svg>
-                  <div className={`absolute top-[323px] right-[175px] w-[130px] h-1 bg-gradient-to-r from-purple-500 to-orange-500 transition-all duration-700 delay-2300 ${modelAnimationStep >= 6 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+                  <div className={`absolute top-[323px] right-[175px] w-[130px] h-1 bg-gradient-to-l from-orange-500 to-purple-500 rounded-full transition-all duration-500 delay-1400 ease-out origin-right ${modelAnimationStep >= 6 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
                 </div>
 
                 <div className="flex justify-center items-center space-x-16">
-                  <div className={`relative transition-all duration-700 delay-2500 ${modelAnimationStep >= 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                  <div className={`relative transition-all duration-400 delay-1900 ease-out ${modelAnimationStep >= 8 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
                     <div className="bg-red-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-red-500 relative ml-5">
                       <Zap className="w-12 h-12 text-red-500" />
                       <span className="absolute -top-3 -left-3 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">5</span>
@@ -460,9 +460,9 @@ const PrevaCare = () => {
                     </div>
                   </div>
                   
-                  <div className={`w-16 h-1 bg-gradient-to-l from-orange-500 to-red-500 rounded-full mb-20 transition-all duration-700 delay-2300 ${modelAnimationStep >= 7 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+                  <div className={`w-16 h-1 bg-gradient-to-l from-orange-500 to-red-500 rounded-full mb-20 transition-all duration-500 delay-1700 ease-out origin-right ${modelAnimationStep >= 7 ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
 
-                  <div className={`relative transition-all duration-700 delay-2100 ${modelAnimationStep >= 7 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
+                  <div className={`relative transition-all duration-400 delay-1600 ease-out ${modelAnimationStep >= 7 ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}>
                     <div className="bg-orange-100 w-24 h-24 rounded-full flex items-center justify-center shadow-lg border-4 border-orange-500 relative ml-5">
                       <Brain className="w-12 h-12 text-orange-500" />
                       <span className="absolute -top-3 -left-3 bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</span>
