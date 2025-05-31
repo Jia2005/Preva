@@ -79,47 +79,67 @@ const PrevaCare = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const CallbackModal = () => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
-      <div className="bg-white rounded-lg p-8 max-w-md w-full relative animate-in slide-in-from-bottom-4 duration-300">
-        <button 
-          onClick={() => setIsModalOpen(false)}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-        >
-          <X size={24} />
-        </button>
-        <h3 className="text-2xl font-semibold text-gray-800 mb-6">Request a Call Back</h3>
-        <div className="space-y-4">
-          <input 
-            type="text" 
-            placeholder="Full Name" 
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-          <input 
-            type="email" 
-            placeholder="Email Address" 
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-          <input 
-            type="tel" 
-            placeholder="Phone Number" 
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-          <input 
-            type="text" 
-            placeholder="Company Name" 
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-          />
-          <button 
-            onClick={() => setIsModalOpen(false)}
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-medium hover:scale-105"
-          >
-            Request Call Back
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  const CallbackModal = () => {
+  setIsModalOpen(false);
+  
+  Swal.fire({
+    icon: 'success',
+    title: 'Form Submitted Successfully!',
+    text: 'We will get back to you soon.',
+    showConfirmButton: false,
+    timer: 2500,
+    timerProgressBar: true,
+    customClass: {
+      popup: 'animated-success-popup'
+    },
+    didOpen: () => {
+      const style = document.createElement('style');
+      style.textContent = `
+        .animated-success-popup .swal2-success-circular-line-right {
+          animation: rotatePlaceholder 4.25s ease-in;
+        }
+        
+        .animated-success-popup .swal2-success-fix {
+          animation: rotatePlaceholder 4.25s ease-in;
+        }
+        
+        .animated-success-popup .swal2-success-line {
+          animation: animateSuccessLong 0.75s ease-in-out 0.25s;
+        }
+        
+        .animated-success-popup .swal2-success-line.swal2-success-line-long {
+          animation: animateSuccessLong 0.75s ease-in-out 0.25s;
+        }
+        
+        .animated-success-popup .swal2-success-line.swal2-success-line-short {
+          animation: animateSuccessShort 0.75s ease-in-out 0.25s;
+        }
+        
+        @keyframes rotatePlaceholder {
+          0% { transform: rotate(-45deg); }
+          5% { transform: rotate(-45deg); }
+          12% { transform: rotate(-405deg); }
+          100% { transform: rotate(-405deg); }
+        }
+        
+        @keyframes animateSuccessLong {
+          0% { width: 0; }
+          65% { width: 0; }
+          84% { width: 55px; }
+          100% { width: 47px; }
+        }
+        
+        @keyframes animateSuccessShort {
+          0% { width: 0; }
+          65% { width: 0; }
+          84% { width: 30px; }
+          100% { width: 25px; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  });
+};
 
   return (
     <div className="min-h-screen bg-white" style={{ scrollBehavior: 'smooth' }}>
@@ -247,134 +267,138 @@ const PrevaCare = () => {
         </div>
       </section>
 
-      <section id="why-prevacare" className={`py-20 bg-gray-50 transition-all duration-1000 ${isVisible['why-prevacare'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-              Why <span className="text-blue-500">PrevaCare</span> for Corporates?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Transform your workplace wellness with our comprehensive, data-driven approach
-            </p>
+      <section id="why-prevacare" className={`py-20 bg-gray-50 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            Why <span className="text-blue-500">PrevaCare</span> for Corporates?
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Transform your workplace wellness with our comprehensive, data-driven approach
+          </p>
+        </div>
+
+        <div className="max-w-7xl mx-auto mb-12">
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-gray-800 mb-12 text-center">Corporate Pain Points We Solve</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: TrendingUp,
+                  title: "Rising Absenteeism & Burnout",
+                  desc: "Employee health issues leading to decreased productivity and increased operational costs",
+                  color: "red",
+                  delay: "0"
+                },
+                {
+                  icon: BarChart3,
+                  title: "No ROI from Current Wellness Spends",
+                  desc: "Traditional wellness programs lack measurable outcomes and employee engagement",
+                  color: "orange",
+                  delay: "200"
+                },
+                {
+                  icon: Building2,
+                  title: "Manual Compliance & Scattered Vendors",
+                  desc: "Complex vendor management with no centralized dashboard or unified reporting system",
+                  color: "yellow",
+                  delay: "400"
+                }
+              ].map((item, index) => (
+                <div 
+                  key={index}
+                  className={`bg-white p-6 rounded-xl shadow-sm border-t-4 border-${item.color}-500 transition-all duration-500 ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${parseInt(item.delay) + 600}ms` }}
+                >
+                  <div className="text-center">
+                    <div className={`bg-${item.color}-50 w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                      <item.icon className={`w-8 h-8 text-${item.color}-500`} />
+                    </div>
+                    <h4 className="font-semibold text-gray-800 mb-3 text-lg">{item.title}</h4>
+                    <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-8">
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center lg:text-left">Corporate Pain Points We Solve</h3>
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: TrendingUp,
-                    title: "Rising Absenteeism & Burnout",
-                    desc: "Employee health issues leading to decreased productivity and increased operational costs",
-                    color: "red",
-                    delay: "0"
-                  },
-                  {
-                    icon: BarChart3,
-                    title: "No ROI from Current Wellness Spends",
-                    desc: "Traditional wellness programs lack measurable outcomes and employee engagement",
-                    color: "orange",
-                    delay: "200"
-                  },
-                  {
-                    icon: Building2,
-                    title: "Manual Compliance & Scattered Vendors",
-                    desc: "Complex vendor management with no centralized dashboard or unified reporting system",
-                    color: "yellow",
-                    delay: "400"
-                  }
-                ].map((item, index) => (
-                  <div 
-                    key={index}
-                    className={`bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 transform hover:scale-105 ${
-                      isVisible['why-prevacare'] 
-                        ? 'opacity-100 translate-x-0' 
-                        : 'opacity-0 -translate-x-8'
-                    }`}
-                    style={{ transitionDelay: `${parseInt(item.delay) + 600}ms` }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`bg-${item.color}-50 p-3 rounded-lg`}>
-                        <item.icon className={`w-6 h-6 text-${item.color}-500`} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">{item.title}</h4>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
+          <div>
+            <h3 className="text-3xl font-bold text-gray-800 mb-12 text-center">How PrevaCare Solves This</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: Shield,
+                  title: "Doctor & Diagnostics Plans",
+                  desc: "Comprehensive healthcare coverage with vetted medical professionals and diagnostic centers",
+                  color: "blue",
+                  delay: "0"
+                },
+                {
+                  icon: LineChart,
+                  title: "Health Dashboards & Analytics",
+                  desc: "Real-time insights and data visualization for informed decision-making and ROI tracking",
+                  color: "emerald",
+                  delay: "200"
+                },
+                {
+                  icon: FileText,
+                  title: "Auto-generated Compliance Certificates",
+                  desc: "Automated compliance management with instant certificate generation and audit trails",
+                  color: "purple",
+                  delay: "400"
+                },
+                {
+                  icon: Target,
+                  title: "Engagement Tracking",
+                  desc: "Monitor employee participation and measure program effectiveness with detailed analytics",
+                  color: "indigo",
+                  delay: "600"
+                }
+              ].map((item, index) => (
+                <div 
+                  key={index}
+                  className={`bg-white p-6 rounded-xl shadow-sm border-t-4 border-${item.color}-500 transition-all duration-500 ${
+                    isVisible 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${parseInt(item.delay) + 1000}ms` }}
+                >
+                  <div className="text-center">
+                    <div className={`bg-${item.color}-50 w-16 h-16 rounded-lg flex items-center justify-center mx-auto mb-4`}>
+                      <item.icon className={`w-8 h-8 text-${item.color}-500`} />
                     </div>
+                    <h4 className="font-semibold text-gray-800 mb-3 text-lg">{item.title}</h4>
+                    <p className="text-gray-600 leading-relaxed text-sm">{item.desc}</p>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-8">
-              <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center lg:text-left">How PrevaCare Solves This</h3>
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: Shield,
-                    title: "Doctor & Diagnostics Plans",
-                    desc: "Comprehensive healthcare coverage with vetted medical professionals and diagnostic centers",
-                    color: "blue",
-                    delay: "0"
-                  },
-                  {
-                    icon: LineChart,
-                    title: "Health Dashboards & Analytics",
-                    desc: "Real-time insights and data visualization for informed decision-making and ROI tracking",
-                    color: "emerald",
-                    delay: "200"
-                  },
-                  {
-                    icon: FileText,
-                    title: "Auto-generated Compliance Certificates",
-                    desc: "Automated compliance management with instant certificate generation and audit trails",
-                    color: "purple",
-                    delay: "400"
-                  },
-                  {
-                    icon: Target,
-                    title: "Engagement Tracking",
-                    desc: "Monitor employee participation and measure program effectiveness with detailed analytics",
-                    color: "indigo",
-                    delay: "600"
-                  }
-                ].map((item, index) => (
-                  <div 
-                    key={index}
-                    className={`bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 border-l-4 border-${item.color}-500 transform hover:scale-105 ${
-                      isVisible['why-prevacare'] 
-                        ? 'opacity-100 translate-x-0' 
-                        : 'opacity-0 translate-x-8'
-                    }`}
-                    style={{ transitionDelay: `${parseInt(item.delay) + 800}ms` }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className={`bg-${item.color}-50 p-3 rounded-lg`}>
-                        <item.icon className={`w-6 h-6 text-${item.color}-500`} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800 mb-2">{item.title}</h4>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className={`text-center lg:text-left transition-all duration-700 delay-1000 ${
-                isVisible['why-prevacare'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <button className="bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-600 transition-all duration-300 font-medium flex items-center gap-2 mx-auto lg:mx-0 hover:scale-105 transform">
-                  Talk to a Corporate Wellness Expert
-                  <ArrowRight size={20} />
-                </button>
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+
+        <div className={`text-center transition-all duration-700 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
+          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 max-w-2xl mx-auto shadow-lg">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Ready to Transform Your Workplace Wellness?
+            </h3>
+            <p className="text-blue-100 mb-6 text-lg">
+              Let our experts show you how PrevaCare can solve your specific challenges
+            </p>
+            <button className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg flex items-center gap-2 mx-auto transition-all duration-300 hover:shadow-lg hover:scale-105">
+              Talk to a Corporate Wellness Expert
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
 
       <section id="proactive-model" className={`py-20 bg-white transition-all duration-1000 ${isVisible['proactive-model'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto px-6">
