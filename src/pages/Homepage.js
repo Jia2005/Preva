@@ -225,7 +225,7 @@ const PrevaCare = () => {
 
         <div className="container mx-auto px-6 relative z-10 text-center text-white">
           <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-all duration-1000 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="text-blue-400">Proactive Health</span> for a <br />
+            <span className="text-blue-600">Proactive Health</span> for a <br />
             <span className="text-emerald-400">Productive Workplace</span>
           </h1>
           <p className={`text-xl md:text-2xl text-gray-200 mb-8 max-w-4xl mx-auto transition-all duration-1000 delay-300 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
