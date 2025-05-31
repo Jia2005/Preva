@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import { Phone, Calendar, TrendingUp, Shield, Users, BarChart3, ArrowRight, X, Activity, Brain, Heart, Zap, Building2, LineChart, FileText, Target, Menu} from 'lucide-react';
 import Logo from './../Media/logo.png';
 import video from './../Media/video.mp4';
@@ -79,7 +80,49 @@ const PrevaCare = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const CallbackModal = () => {
+  const CallbackModal = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-in fade-in duration-300">
+      <div className="bg-white rounded-lg p-8 max-w-md w-full relative animate-in slide-in-from-bottom-4 duration-300">
+        <button 
+          onClick={() => setIsModalOpen(false)}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          <X size={24} />
+        </button>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-6">Request a Call Back</h3>
+        <div className="space-y-4">
+          <input 
+            type="text" 
+            placeholder="Full Name" 
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+          <input 
+            type="email" 
+            placeholder="Email Address" 
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+          <input 
+            type="tel" 
+            placeholder="Phone Number" 
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+          <input 
+            type="text" 
+            placeholder="Company Name" 
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          />
+          <button 
+            onClick={handleFormSubmit}
+            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 font-medium hover:scale-105"
+          >
+            Request Call Back
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const handleFormSubmit = () => {
   setIsModalOpen(false);
   
   Swal.fire({
