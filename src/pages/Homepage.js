@@ -95,7 +95,7 @@ const PrevaCare = () => {
           <X size={24} />
         </button>
         <iframe
-          src="https://calendly.com/jia2-harisinghani/30min"
+          src="https://calendly.com/ur-name/30min" //change URL based on your email
           width="100%"
           height="100%"
           frameBorder="0"
