@@ -26,7 +26,7 @@ It's a modern, responsive React website that looks great on everything from phon
 
 1. Clone it down:
    ```bash
-   git clone [your-repo-url]
+   git clone https://github.com/Jia2005/Preva.git
    cd prevacare-homepage
    ```
 
